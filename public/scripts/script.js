@@ -17,15 +17,9 @@ async function getDeaths() {
         return c.countriesAndTerritories == country;
     });
 
-    //For all.
-    // for (let i = 0; i < countrydata.length; i++) {
-    //     xs.push(i);
-    //     ys.push(parseInt(countrydata[i].deaths));
-    // }
-
-    //For last 30 days.
-    for (let i = 0; i < 30; i++) {
-        xs.push(i);
+    // For last 30 days.
+    for (let i = 30; i > 0; i--) {
+        xs.push(countrydata[i].dateRep);
         ys.push(parseInt(countrydata[i].deaths));
     }
     console.log(ys)
@@ -41,15 +35,24 @@ async function getGraph() {
         data: {
             labels: deaths.xs,
             datasets: [{
-                label: 'My First dataset',
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: deaths.ys 
+                label: 'Deaths',
+                backgroundColor: 'rgb(127, 219, 255)',
+                borderColor: 'rgb(2, 255, 112)',
+                data: deaths.ys, 
             }]
         },
 
         // Configuration options go here
-        options: {}
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        // Y-axes starting at 0
+                        beginAtZero : true
+                    }
+                }]
+            }
+        }
     });
 
 }
