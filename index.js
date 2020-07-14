@@ -18,7 +18,7 @@ app.get('/covid/data', async (req, res) => {
     const api_url = 'https://opendata.ecdc.europa.eu/covid19/casedistribution/json/';
     const fetch_response = await fetch(api_url);
     const jsonres = await fetch_response.json();
-    res.send(jsonres);
+    res.json(jsonres); // Like send but in json format.
 });
 
 

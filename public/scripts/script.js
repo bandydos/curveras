@@ -18,7 +18,7 @@ async function getDeaths() {
     });
 
     // For last 30 days.
-    for (let i = 30; i > 0; i--) {
+    for (let i = 30; i >= 0; i--) {
         xs.push(countrydata[i].dateRep);
         ys.push(parseInt(countrydata[i].deaths));
     }
